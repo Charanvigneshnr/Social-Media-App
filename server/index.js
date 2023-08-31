@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+
 // CONFIGS
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,10 +38,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // MONGOOSE SETUP
-console.log(process.env.MONGO_URI);
 const PORT = process.env.PORT || 6001;
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
